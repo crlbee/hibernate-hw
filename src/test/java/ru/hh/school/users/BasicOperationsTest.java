@@ -40,6 +40,7 @@ public class BasicOperationsTest extends BaseTest {
     // https://stackoverflow.com/questions/5862680/whats-the-advantage-of-persist-vs-save-in-hibernate
     // https://vladmihalcea.com/jpa-persist-and-merge
     // ToDo сохраните пользователя
+    getSession().save(user);
 
     assertEquals(1L, getInsertCount());
     assertEquals(user, getSession().get(User.class, user.getId()));
@@ -53,6 +54,7 @@ public class BasicOperationsTest extends BaseTest {
     User extractedUser = getSession().get(User.class, user.getId());
     assertNotNull(extractedUser);
 
+    getSession().remove(user);
     // todo удалите пользователя
 
     extractedUser = getSession().get(User.class, user.getId());
